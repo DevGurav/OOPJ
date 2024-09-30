@@ -11,3 +11,11 @@ public class WhileLoop
         }
     }
 }
+/*
+output
+Value of i: 1
+Value of i: 2
+Value of i: 3
+Value of i: 4
+Value of i: 5
+*/    
