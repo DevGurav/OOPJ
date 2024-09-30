@@ -28,3 +28,19 @@ System.out.println("Addition of Integer is "+Adder.add(c,d));
 System.out.println("Addition of Integer is "+Adder.add(e,f,g)); 
 }
 }
+/*
+output
+enter two Integer values
+12
+23
+enter two Double values
+23.45
+56.67
+enter three Integer values
+12
+34
+69
+Addition of Integer is 35
+Addition of Integer is 80.12
+Addition of Integer is 115 
+*/  
