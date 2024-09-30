@@ -1,0 +1,51 @@
+import java.util.Arrays;
+
+public class StringFunctionsDemo {
+
+    public static void main(String[] args) {
+        // Initialize some sample strings
+        String str1 = "Hello, World!";
+        String str2 = "Java Programming";
+        String str3 = "HELLO, WORLD!";
+        String str4 = "Hello, World!"; // identical to str1
+
+        // 1. length() - Find length of a string
+        System.out.println("Length of str1: " + str1.length());
+
+        // 2. concat() - Concatenate two strings
+        String concatenated = str1.concat(" Welcome to ").concat(str2);
+        System.out.println("Concatenated string: " + concatenated);
+
+        // 3. equals() - Compare two strings for equality
+        System.out.println("Does str1 equal str3? " + str1.equals(str3));
+        System.out.println("Does str1 equal str4? " + str1.equals(str4));
+
+        // 4. compareTo() - Lexicographically compare two strings
+        System.out.println("Compare str1 and str2: " + str1.compareTo(str2)); // non-zero means not equal
+        System.out.println("Compare str1 and str4: " + str1.compareTo(str4)); // 0 means they are equal
+
+        // 5. replace() - Replace a character or substring
+        String replacedString = str1.replace("World", "Java");
+        System.out.println("String after replacement: " + replacedString);
+
+        // 6. split() - Split a string by a delimiter
+        String[] splitArray = str1.split(", ");
+        System.out.println("String split by ', ': " + Arrays.toString(splitArray));
+
+        // 7. substring() - Extract a portion of the string
+        String substring = str2.substring(5, 15);
+        System.out.println("Substring of str2 (5, 15): " + substring);
+
+        // 8. intern() - Returns a canonical representation of the string
+        String internedStr1 = str1.intern();
+        String internedStr4 = str4.intern();
+        System.out.println("Is interned str1 == interned str4? " + (internedStr1 == internedStr4));
+
+        // 9. compare() - Comparing two strings using static compare method (introduced in Java 7)
+        System.out.println("Static compare of str1 and str3: " + String.compare(str1, str3));
+
+        // 10. toUpperCase() and toLowerCase() - Convert case
+        System.out.println("str1 in uppercase: " + str1.toUpperCase());
+        System.out.println("str1 in lowercase: " + str1.toLowerCase());
+    }
+}
