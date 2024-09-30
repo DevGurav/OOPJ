@@ -2,7 +2,7 @@ import java.util.*;
 
 class First
 {
- int a , b ,c;
+ double a , b ,c;
  First ()
  {
   //a=b=c=0;   (Default Constructor)
@@ -24,7 +24,7 @@ class First
    a=i;
    b=j;
  }
- int add(){return a+b+c;}     //Method to calculate result
+ double add(){return a+b+c;}     //Method to calculate result
 }
 
 class Constructoroverloading
@@ -35,10 +35,17 @@ class Constructoroverloading
   First m2 = new First ( 10 , 20 );
   First m3 = new First ( 10 , 20 , 30 );
   First m4 = new First ( 2.33 , 5.34 );
-  int a = m1.add();
+  double a = m1.add();
   System.out.println("First constructor "+a);
   System.out.println("Second constructor " +m2.add());
   System.out.println("Third constructor " +m3.add());
   System.out.println("Third constructor " +m4.add());  
  }
 }
+/*
+output
+ First constructor 0.0
+Second constructor 50.0
+Third constructor 60.0
+Third constructor 7.67
+ */
