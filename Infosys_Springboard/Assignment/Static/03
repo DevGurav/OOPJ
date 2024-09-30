@@ -1,0 +1,78 @@
+public class Booking {
+    private static int seatsAvailable; // Total seats available in the multiplex
+    private String customerEmail;        // Email of the customer
+    private int seatsRequired;           // Seats required by the customer
+    private boolean isBooked;            // Status of the booking
+
+    // Static block to initialize seatsAvailable
+    static {
+        seatsAvailable = 400; // Total seats available
+    }
+
+    // Constructor to initialize customerEmail and seatsRequired
+    public Booking(String customerEmail, int seatsRequired) {
+        this.customerEmail = customerEmail;
+        this.seatsRequired = seatsRequired;
+        
+        // Check if seats are available
+        if (seatsRequired <= seatsAvailable) {
+            this.isBooked = true; // Booking successful
+            seatsAvailable -= seatsRequired; // Update available seats
+        } else {
+            this.isBooked = false; // Booking failed
+        }
+    }
+
+    // Getter for customerEmail
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    // Setter for customerEmail
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    // Getter for seatsRequired
+    public int getSeatsRequired() {
+        return seatsRequired;
+    }
+
+    // Setter for seatsRequired
+    public void setSeatsRequired(int seatsRequired) {
+        this.seatsRequired = seatsRequired;
+    }
+
+    // Getter for isBooked
+    public boolean isBooked() {
+        return isBooked;
+    }
+
+    // Static getter for seatsAvailable
+    public static int getSeatsAvailable() {
+        return seatsAvailable;
+    }
+
+    public static void main(String[] args) {
+        // First Booking
+        Booking booking1 = new Booking("alice@example.com", 5);
+        System.out.println("Booking 1: Email = " + booking1.getCustomerEmail() +
+                ", Seats Required = " + booking1.getSeatsRequired() +
+                ", Is Booked = " + booking1.isBooked() +
+                ", Seats Available = " + Booking.getSeatsAvailable());
+
+        // Second Booking
+        Booking booking2 = new Booking("bob@example.com", 400);
+        System.out.println("Booking 2: Email = " + booking2.getCustomerEmail() +
+                ", Seats Required = " + booking2.getSeatsRequired() +
+                ", Is Booked = " + booking2.isBooked() +
+                ", Seats Available = " + Booking.getSeatsAvailable());
+
+        // Third Booking
+        Booking booking3 = new Booking("charlie@example.com", 396);
+        System.out.println("Booking 3: Email = " + booking3.getCustomerEmail() +
+                ", Seats Required = " + booking3.getSeatsRequired() +
+                ", Is Booked = " + booking3.isBooked() +
+                ", Seats Available = " + Booking.getSeatsAvailable());
+    }
+}

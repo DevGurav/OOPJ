@@ -1,0 +1,45 @@
+
+public class BillTest {
+    public static void main(String[] args) {
+        // Creating Bill objects
+        Bill bill1 = new Bill("Credit Card");
+        Bill bill2 = new Bill("Cash");
+        
+        // Displaying bill details
+        System.out.println("Bill 1: ID = " + bill1.getBillId() + ", Payment Mode = " + bill1.getPaymentMode());
+        System.out.println("Bill 2: ID = " + bill2.getBillId() + ", Payment Mode = " + bill2.getPaymentMode());
+    }
+}
+
+
+class Bill {
+    private static int counter; // Counter for billId generation
+    private String billId;
+    private String paymentMode;
+
+    // Static block to initialize the counter
+    static {
+        counter = 9001; // Start counter from 9001
+    }
+
+    
+    public Bill(String paymentMode) {
+        this.paymentMode = paymentMode;
+        this.billId = "B" + counter++; // Generate billId and increment counter
+    }
+
+  
+    public String getBillId() {
+        return billId;
+    }
+
+  
+    public String getPaymentMode() {
+        return paymentMode;
+    }
+
+    // Setter for paymentMode
+    public void setPaymentMode(String paymentMode) {
+        this.paymentMode = paymentMode;
+    }
+}

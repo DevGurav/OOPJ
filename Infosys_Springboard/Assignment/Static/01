@@ -1,0 +1,38 @@
+// Assuming the Food class is already defined in your project
+
+public class Order {
+    private static int orderIdCounter; // Static counter for orderId generation
+    private int orderId;
+    private Food[] orderedFoods; // Array of ordered foods
+
+    // Static block to initialize the orderIdCounter
+    static {
+        orderIdCounter = 101; // Start counter from 101
+    }
+
+    // Constructor to initialize orderedFoods and generate orderId
+    public Order(Food[] orderedFoods) {
+        this.orderedFoods = orderedFoods;
+        this.orderId = orderIdCounter++; // Generate orderId and increment counter
+    }
+
+    // Method to get the total number of orders placed
+    public static int getTotalNoOfOrders() {
+        return orderIdCounter - 101; // Calculate total orders placed
+    }
+
+    // Getter for orderId
+    public int getOrderId() {
+        return orderId;
+    }
+
+    // Getter for orderedFoods
+    public Food[] getOrderedFoods() {
+        return orderedFoods;
+    }
+
+    // Setter for orderedFoods
+    public void setOrderedFoods(Food[] orderedFoods) {
+        this.orderedFoods = orderedFoods;
+    }
+}

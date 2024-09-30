@@ -1,0 +1,72 @@
+// Tester class
+public class ParticipantTest {
+    public static void main(String[] args) {
+        // Creating Participant objects
+        Participant participant1 = new Participant("Alice", 9876543210L, "New York");
+        Participant participant2 = new Participant("Bob", 9123456789L, "Los Angeles");
+
+        // Displaying participant details
+        System.out.println("Participant 1: ID = " + participant1.getRegistrationId() + ", Name = " + participant1.getName() +
+                ", Contact Number = " + participant1.getContactNumber() + ", City = " + participant1.getCity());
+
+        System.out.println("Participant 2: ID = " + participant2.getRegistrationId() + ", Name = " + participant2.getName() +
+                ", Contact Number = " + participant2.getContactNumber() + ", City = " + participant2.getCity());
+    }
+}
+
+// Participant class
+class Participant {
+    private static int counter; // Static counter for registration ID generation
+    private String registrationId;
+    private String name;
+    private long contactNumber;
+    private String city;
+
+    // Static block to initialize the counter
+    static {
+        counter = 10001; // Start counter from 10001
+    }
+
+    // Constructor to initialize participant details and generate registrationId
+    public Participant(String name, long contactNumber, String city) {
+        this.name = name;
+        this.contactNumber = contactNumber;
+        this.city = city;
+        this.registrationId = "D" + counter++; // Generate registration ID and increment counter
+    }
+
+    // Getter for registrationId
+    public String getRegistrationId() {
+        return registrationId;
+    }
+
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+
+    // Getter for contactNumber
+    public long getContactNumber() {
+        return contactNumber;
+    }
+
+    // Getter for city
+    public String getCity() {
+        return city;
+    }
+
+    // Setter for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Setter for contactNumber
+    public void setContactNumber(long contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    // Setter for city
+    public void setCity(String city) {
+        this.city = city;
+    }
+}
