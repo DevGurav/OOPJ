@@ -1,0 +1,56 @@
+// Tester class
+public class StudentTest {
+    public static void main(String[] args) {
+        // Sample marks array
+        int[] marks = {85, 92, 76, 64, 45, 100, 88};
+
+        // Create a Student instance
+        Student student = new Student(marks);
+
+        // Find grades for the marks
+        student.findGrade();
+
+        // Print the grades
+        System.out.println("Grades for the marks:");
+        for (String grade : student.getGrades()) {
+            System.out.println(grade);
+        }
+    }
+}
+
+// Student class
+class Student {
+    // Instance variables
+    private int[] marks;
+    private String[] grades;
+
+    // Constructor to initialize marks
+    public Student(int[] marks) {
+        this.marks = marks;
+        this.grades = new String[marks.length]; // Initialize grades array with the same size
+    }
+
+    // Method to find grades based on marks
+    public void findGrade() {
+        for (int i = 0; i < marks.length; i++) {
+            if (marks[i] >= 90) {
+                grades[i] = "A";
+            } else if (marks[i] >= 80) {
+                grades[i] = "B";
+            } else if (marks[i] >= 70) {
+                grades[i] = "C";
+            } else if (marks[i] >= 60) {
+                grades[i] = "D";
+            } else if (marks[i] >= 50) {
+                grades[i] = "E";
+            } else {
+                grades[i] = "F";
+            }
+        }
+    }
+
+    // Getter for grades
+    public String[] getGrades() {
+        return grades;
+    }
+}

@@ -1,0 +1,36 @@
+class Tester {
+   
+    public static double[] findDetails(double[] salary) {
+        double[] result = new double[3];
+        double sum = 0;
+        int countGreater = 0;
+        int countLesser = 0;
+        for(double s : salary){
+            sum += s;
+        }
+        double average = sum/salary.length;
+        result[0] = average;
+       
+        for(double s : salary){
+            if(s>average){
+                countGreater++;
+            } else if(s<average){
+                countLesser++;
+            }
+        }
+        result[1] = countGreater;
+        result[2] = countLesser;
+        return result;
+
+    }
+       
+    public static void main(String[] args) {
+        double[] salary = { 23500.0, 25080.0, 28760.0, 22340.0, 19890.0 };
+        double[] details = findDetails(salary);
+             
+        System.out.println("Average salary: "+ details[0]);
+        System.out.println("Number of salaries greater than the average salary: "+ details[1]);
+        System.out.println("Number of salaries lesser than the average salary: "+ details[2]);
+    }
+}
+
