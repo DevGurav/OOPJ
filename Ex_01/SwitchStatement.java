@@ -33,3 +33,7 @@ public class SwitchStatement
         }
     }
 }
+/*
+output
+    Wednesday
+   */ 
