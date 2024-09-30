@@ -1,0 +1,32 @@
+
+import java.util.HashMap;
+
+public class Tester {
+
+    public static void main(String[] args) {
+        String testStr = "hello world";
+        int highestCount = findHighestOccurrence(testStr);
+        System.out.println("Highest occurring character count: " + highestCount);
+    }
+
+    public static int findHighestOccurrence(String str) {
+        // Create a HashMap to store character counts
+        HashMap<Character, Integer> charCountMap = new HashMap<>();
+
+        // Count occurrences of each character
+        for (char c : str.toCharArray()) {
+            charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
+        }
+
+        // Find the maximum occurrence count
+        int maxCount = 0;
+        for (int count : charCountMap.values()) {
+            if (count > maxCount) {
+                maxCount = count;
+            }
+        }
+
+        return maxCount;
+    }
+}
+
