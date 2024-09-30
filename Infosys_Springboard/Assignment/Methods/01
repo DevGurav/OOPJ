@@ -1,0 +1,50 @@
+class Order {
+    // Instance variables
+    private int orderId;
+    private String customerName;
+    private double totalPrice;
+    
+    // Constructor to initialize the instance variables
+    public Order(int orderId, String customerName) {
+        this.orderId = orderId;
+        this.customerName = customerName;
+        this.totalPrice = 0.0;
+    }
+    
+    // Method to calculate the total price with 5% service charge
+    public double calculateTotalPrice(int unitPrice) {
+        double serviceCharge = 0.05 * unitPrice;
+        totalPrice = unitPrice + serviceCharge;
+        return totalPrice;
+    }
+    
+    // Getters for the instance variables
+    public int getOrderId() {
+        return orderId;
+    }
+    
+    public String getCustomerName() {
+        return customerName;
+    }
+    
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+}
+
+class Tester {
+    public static void main(String[] args) {
+        // Create an object of the Order class and initialize instance variables
+        Order order = new Order(101, "John Doe");
+        
+        // Invoke the calculateTotalPrice() method
+        double total = order.calculateTotalPrice(100); // Assuming the unit price is 100
+        
+        // Display the values of instance variables
+        System.out.println("Order ID: " + order.getOrderId());
+        System.out.println("Customer Name: " + order.getCustomerName());
+        System.out.println("Total Price (including service charge): " + order.getTotalPrice());
+    }
+}
+
+ 
