@@ -21,3 +21,7 @@ public class NestedIfElse
         }
     }
 }
+/*
+output
+    The number is zero.
+    */
