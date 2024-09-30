@@ -28,3 +28,8 @@ class ClassObject
         person1.displayInfo();
      }
  }
+/*
+output
+Name: Alice
+Age: 25
+*/    
