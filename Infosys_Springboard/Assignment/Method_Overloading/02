@@ -1,0 +1,104 @@
+class Point {
+    private double xCoordinate;
+    private double yCoordinate;
+
+    // Constructor to initialize the coordinates
+    public Point(double xCoordinate, double yCoordinate) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+    }
+
+    // Getters
+    public double getXCoordinate() {
+        return xCoordinate;
+    }
+
+    public double getYCoordinate() {
+        return yCoordinate;
+    }
+
+    // Method to calculate distance from another point
+    public double calculateDistance(Point other) {
+        return Math.sqrt(Math.pow(this.xCoordinate - other.xCoordinate, 2) + 
+                         Math.pow(this.yCoordinate - other.yCoordinate, 2));
+    }
+}
+
+class Triangle {
+    private Point point1;
+    private Point point2;
+    private Point point3;
+
+    // Parameterless constructor
+    public Triangle() {
+        this.point1 = new Point(0, 0);
+        this.point2 = new Point(1, 1);
+        this.point3 = new Point(2, 5);
+    }
+
+    // Constructor with coordinates
+    public Triangle(double point1XCoordinate, double point1YCoordinate,
+                   double point2XCoordinate, double point2YCoordinate,
+                   double point3XCoordinate, double point3YCoordinate) {
+        this.point1 = new Point(point1XCoordinate, point1YCoordinate);
+        this.point2 = new Point(point2XCoordinate, point2YCoordinate);
+        this.point3 = new Point(point3XCoordinate, point3YCoordinate);
+    }
+
+    // Constructor with Point objects
+    public Triangle(Point point1, Point point2, Point point3) {
+        this.point1 = point1;
+        this.point2 = point2;
+        this.point3 = point3;
+    }
+
+    // Method to calculate the perimeter
+    public double calculatePerimeter() {
+        double a = point1.calculateDistance(point2);
+        double b = point2.calculateDistance(point3);
+        double c = point3.calculateDistance(point1);
+        double perimeter = a + b + c;
+        return Math.round(perimeter * 100.0) / 100.0; // Round off to 2 decimal digits
+    }
+
+    // Method to calculate the area
+    public double calculateArea() {
+        double a = point1.calculateDistance(point2);
+        double b = point2.calculateDistance(point3);
+        double c = point3.calculateDistance(point1);
+        double s = (a + b + c) / 2; // semi-perimeter
+        double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+        return Math.round(area * 100.0) / 100.0; // Round off to 2 decimal digits
+    }
+
+    // Getters
+    public Point getPoint1() {
+        return point1;
+    }
+
+    public Point getPoint2() {
+        return point2;
+    }
+
+    public Point getPoint3() {
+        return point3;
+    }
+
+    public static void main(String[] args) {
+        // Test the functionalities
+        Triangle triangle1 = new Triangle();
+        System.out.println("Triangle 1 Perimeter: " + triangle1.calculatePerimeter());
+        System.out.println("Triangle 1 Area: " + triangle1.calculateArea());
+
+        Triangle triangle2 = new Triangle(0, 0, 4, 0, 2, 3);
+        System.out.println("Triangle 2 Perimeter: " + triangle2.calculatePerimeter());
+        System.out.println("Triangle 2 Area: " + triangle2.calculateArea());
+
+        Point p1 = new Point(1, 1);
+        Point p2 = new Point(2, 3);
+        Point p3 = new Point(3, 1);
+        Triangle triangle3 = new Triangle(p1, p2, p3);
+        System.out.println("Triangle 3 Perimeter: " + triangle3.calculatePerimeter());
+        System.out.println("Triangle 3 Area: " + triangle3.calculateArea());
+    }
+}

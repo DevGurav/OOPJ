@@ -1,0 +1,56 @@
+public class Point {
+    private double xCoordinate;
+    private double yCoordinate;
+
+    // Constructor to initialize coordinates
+    public Point(double xCoordinate, double yCoordinate) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+    }
+
+    // Method to calculate distance from the origin (0, 0)
+    public double calculateDistance() {
+        double distance = Math.sqrt(Math.pow(xCoordinate, 2) + Math.pow(yCoordinate, 2));
+        return Math.round(distance * 100.0) / 100.0; // Round off to 2 decimal places
+    }
+
+    // Method to calculate distance from another point
+    public double calculateDistance(Point point) {
+        double distance = Math.sqrt(Math.pow(this.xCoordinate - point.xCoordinate, 2) +
+                                     Math.pow(this.yCoordinate - point.yCoordinate, 2));
+        return Math.round(distance * 100.0) / 100.0; // Round off to 2 decimal places
+    }
+
+    // Getter for xCoordinate
+    public double getXCoordinate() {
+        return xCoordinate;
+    }
+
+    // Setter for xCoordinate
+    public void setXCoordinate(double xCoordinate) {
+        this.xCoordinate = xCoordinate;
+    }
+
+    // Getter for yCoordinate
+    public double getYCoordinate() {
+        return yCoordinate;
+    }
+
+    // Setter for yCoordinate
+    public void setYCoordinate(double yCoordinate) {
+        this.yCoordinate = yCoordinate;
+    }
+
+    public static void main(String[] args) {
+        // Create Point objects
+        Point point1 = new Point(3.0, 4.0);
+        Point point2 = new Point(6.0, 8.0);
+
+        // Calculate distance from origin
+        System.out.println("Distance of point1 from origin: " + point1.calculateDistance());
+        System.out.println("Distance of point2 from origin: " + point2.calculateDistance());
+
+        // Calculate distance between point1 and point2
+        System.out.println("Distance between point1 and point2: " + point1.calculateDistance(point2));
+    }
+}

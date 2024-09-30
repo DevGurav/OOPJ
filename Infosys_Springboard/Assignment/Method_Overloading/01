@@ -1,0 +1,54 @@
+import java.util.HashMap;
+import java.util.Map;
+
+class Bill {
+    private static final Map<Integer, Double> itemPricesById = new HashMap<>();
+    private static final Map<String, Map<String, Map<Integer, Double>>> itemPricesByDetails = new HashMap<>();
+
+    // Static block to initialize item prices
+    static {
+        // Initialize prices based on item ID
+        itemPricesById.put(1, 10.0);
+        itemPricesById.put(2, 15.0);
+        itemPricesById.put(3, 20.0);
+
+        // Initialize prices based on brand name, item type, and size
+        itemPricesByDetails.put("BrandA", new HashMap<>());
+        itemPricesByDetails.get("BrandA").put("Type1", new HashMap<>());
+        itemPricesByDetails.get("BrandA").get("Type1").put(30, 25.0);
+        itemPricesByDetails.get("BrandA").get("Type1").put(40, 30.0);
+
+        itemPricesByDetails.put("BrandB", new HashMap<>());
+        itemPricesByDetails.get("BrandB").put("Type2", new HashMap<>());
+        itemPricesByDetails.get("BrandB").get("Type2").put(30, 35.0);
+        itemPricesByDetails.get("BrandB").get("Type2").put(40, 40.0);
+    }
+
+    // Method to find price by itemId
+    public double findPrice(int itemId) {
+        return itemPricesById.getOrDefault(itemId, 0.0);
+    }
+
+    // Method to find price by brandName, itemType, and size
+    public double findPrice(String brandName, String itemType, int size) {
+        if (itemPricesByDetails.containsKey(brandName) &&
+                itemPricesByDetails.get(brandName).containsKey(itemType) &&
+                itemPricesByDetails.get(brandName).get(itemType).containsKey(size)) {
+            return itemPricesByDetails.get(brandName).get(itemType).get(size);
+        }
+        return 0.0;
+    }
+
+    public static void main(String[] args) {
+        Bill bill = new Bill();
+
+        // Test findPrice(int itemId)
+        System.out.println("Price for itemId 1: " + bill.findPrice(1)); // Output: 10.0
+        System.out.println("Price for itemId 4: " + bill.findPrice(4)); // Output: 0.0
+
+        // Test findPrice(String brandName, String itemType, int size)
+        System.out.println("Price for BrandA, Type1, Size 30: " + bill.findPrice("BrandA", "Type1", 30)); // Output: 25.0
+        System.out.println("Price for BrandB, Type2, Size 40: " + bill.findPrice("BrandB", "Type2", 40)); // Output: 40.0
+        System.out.println("Price for BrandA, Type1, Size 50: " + bill.findPrice("BrandA", "Type1", 50)); // Output: 0.0
+    }
+}
