@@ -1,0 +1,91 @@
+class User {
+    private int id;
+    private String userName;
+    private String emailId;
+    private double walletBalance;
+
+    // Constructor to initialize User
+    public User(int id, String userName, String emailId, double walletBalance) {
+        this.id = id;
+        this.userName = userName;
+        this.emailId = emailId;
+        this.walletBalance = walletBalance;
+    }
+
+    // Method to make payment
+    public boolean makePayment(double billAmount) {
+        if (billAmount <= walletBalance) {
+            walletBalance -= billAmount;
+            return true; // Payment successful
+        }
+        return false; // Insufficient balance
+    }
+
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public double getWalletBalance() {
+        return walletBalance;
+    }
+
+    public void setWalletBalance(double walletBalance) {
+        this.walletBalance = walletBalance;
+    }
+}
+
+class PremiumUser extends User {
+    private double rewardPoints;
+
+    // Constructor to initialize PremiumUser
+    public PremiumUser(int id, String userName, String emailId, double walletBalance) {
+        super(id, userName, emailId, walletBalance);
+        this.rewardPoints = 0.0;
+    }
+
+    // Override makePayment to include reward points
+    @Override
+    public boolean makePayment(double billAmount) {
+        boolean paymentSuccessful = super.makePayment(billAmount);
+        if (paymentSuccessful) {
+            // Credit reward points
+            rewardPoints += billAmount * 0.10; // 10% of the bill amount
+        }
+        return paymentSuccessful;
+    }
+
+    // Getter for reward points
+    public double getRewardPoints() {
+        return rewardPoints;
+    }
+}
+
+// Tester class
+public class EPayWalletTester {
+    public static void main(String[] args) {
+        // Creating User and PremiumUser objects
+        User user = new User(1, "John Doe", "john@example.com", 100.0);
+        PremiumUser premiumUser = new PremiumUser(2, "Jane Smith", "jane@example.com", 200.0);
+
+        // Making payments
+        System.out.println("User payment of 50: " + user.makePayment(50)); // Expected: true
+        System.out.println("User wallet balance: " + user.getWalletBalance()); // Expected: 50.0
+
+        System.out.println("PremiumUser payment of 150: " + premiumUser.makePayment(150)); // Expected: true
+        System.out.println("PremiumUser wallet balance: " + premiumUser.getWalletBalance()); // Expected: 50.0
+        System.out.println("PremiumUser reward points: " + premiumUser.getRewardPoints()); // Expected: 15.0
+
+        System.out.println("PremiumUser payment of 100: " + premiumUser.makePayment(100)); // Expected: false
+        System.out.println("PremiumUser wallet balance: " + premiumUser.getWalletBalance()); // Expected: 50.0
+        System.out.println("PremiumUser reward points: " + premiumUser.getRewardPoints()); // Expected: 15.0
+    }
+}
