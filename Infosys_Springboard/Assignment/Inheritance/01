@@ -1,0 +1,158 @@
+class Employee {
+    private int employeeId;
+    private String employeeName;
+
+    // Constructor to initialize employeeId and employeeName
+    public Employee(int employeeId, String employeeName) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+    }
+
+    // Getter for employeeId
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    // Setter for employeeId
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    // Getter for employeeName
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    // Setter for employeeName
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+}
+
+class PermanentEmployee extends Employee {
+    private double basicPay;
+    private double hra;
+    private float experience;
+    private double salary;
+
+    // Constructor to initialize employee details
+    public PermanentEmployee(int empId, String name, double basicPay, double hra, float experience) {
+        super(empId, name);
+        this.basicPay = basicPay;
+        this.hra = hra;
+        this.experience = experience;
+        calculateMonthlySalary(); // Calculate salary upon creation
+    }
+
+    // Method to calculate the monthly salary
+    public void calculateMonthlySalary() {
+        double variableComponent;
+
+        // Determine variable component based on experience
+        if (experience < 1) {
+            variableComponent = 0;
+        } else if (experience < 3) {
+            variableComponent = basicPay * 0.1; // 10%
+        } else if (experience < 5) {
+            variableComponent = basicPay * 0.15; // 15%
+        } else {
+            variableComponent = basicPay * 0.2; // 20%
+        }
+
+        // Calculate the total salary
+        salary = basicPay + hra + variableComponent;
+        salary = Math.round(salary); // Round off the salary
+    }
+
+    // Getter for salary
+    public double getSalary() {
+        return salary;
+    }
+
+    // Setters and Getters for other attributes
+    public double getBasicPay() {
+        return basicPay;
+    }
+
+    public void setBasicPay(double basicPay) {
+        this.basicPay = basicPay;
+        calculateMonthlySalary(); // Recalculate salary if basic pay changes
+    }
+
+    public double getHra() {
+        return hra;
+    }
+
+    public void setHra(double hra) {
+        this.hra = hra;
+        calculateMonthlySalary(); // Recalculate salary if HRA changes
+    }
+
+    public float getExperience() {
+        return experience;
+    }
+
+    public void setExperience(float experience) {
+        this.experience = experience;
+        calculateMonthlySalary(); // Recalculate salary if experience changes
+    }
+}
+
+class ContractEmployee extends Employee {
+    private double wage;
+    private float hoursWorked;
+    private double salary;
+
+    // Constructor to initialize contract employee details
+    public ContractEmployee(int empId, String name, double wage, float hoursWorked) {
+        super(empId, name);
+        this.wage = wage;
+        this.hoursWorked = hoursWorked;
+        calculateSalary(); // Calculate salary upon creation
+    }
+
+    // Method to calculate salary for contract employee
+    public void calculateSalary() {
+        salary = hoursWorked * wage; // Calculate salary
+        salary = Math.round(salary); // Round off the salary
+    }
+
+    // Getter for salary
+    public double getSalary() {
+        return salary;
+    }
+
+    // Setters and Getters for other attributes
+    public double getWage() {
+        return wage;
+    }
+
+    public void setWage(double wage) {
+        this.wage = wage;
+        calculateSalary(); // Recalculate salary if wage changes
+    }
+
+    public float getHoursWorked() {
+        return hoursWorked;
+    }
+
+    public void setHoursWorked(float hoursWorked) {
+        this.hoursWorked = hoursWorked;
+        calculateSalary(); // Recalculate salary if hours worked changes
+    }
+}
+
+// Tester class for testing functionality
+public class Tester {
+    public static void main(String[] args) {
+        // Testing PermanentEmployee
+        PermanentEmployee permEmp = new PermanentEmployee(101, "Alice", 30000, 5000, 2.5f);
+        System.out.println("Permanent Employee: " + permEmp.getEmployeeName());
+        System.out.println("Monthly Salary: " + permEmp.getSalary());
+
+        // Testing ContractEmployee
+        ContractEmployee contractEmp = new ContractEmployee(102, "Bob", 150, 160);
+        System.out.println("Contract Employee: " + contractEmp.getEmployeeName());
+        System.out.println("Monthly Salary: " + contractEmp.getSalary());
+    }
+}

@@ -1,0 +1,46 @@
+// Camera.java
+class Camera {
+    protected String brand; // Camera brand
+    protected int megapixels; // Megapixels of the camera
+
+    // Constructor for Camera
+    public Camera(String brand, int megapixels) {
+        this.brand = brand;
+        this.megapixels = megapixels;
+    }
+
+    // Method to display camera details
+    public void displayDetails() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Megapixels: " + megapixels);
+    }
+}
+
+// DigitalCamera.java
+class DigitalCamera extends Camera {
+    private String type; // Type of digital camera
+
+    // Constructor for DigitalCamera
+    public DigitalCamera(String brand, int megapixels, String type) {
+        super(brand, megapixels); // Call to the superclass constructor
+        this.type = type; // Initialize the type
+    }
+
+    // Overriding the displayDetails method to include the camera type
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call to the superclass method
+        System.out.println("Type: " + type); // Display camera type
+    }
+}
+
+// Tester.java
+public class Tester {
+    public static void main(String[] args) {
+        // Create a DigitalCamera object with appropriate values
+        DigitalCamera digitalCamera = new DigitalCamera("Canon", 100, "DSLR");
+
+        // Display the details of the digital camera
+        digitalCamera.displayDetails();
+    }
+}
