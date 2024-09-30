@@ -1,0 +1,39 @@
+public class PalindromeChecker {
+    private int number;
+
+    // Constructor to initialize the number
+    public PalindromeChecker(int number) {
+        this.number = number;
+    }
+
+    // Method to find the reverse of the number
+    public int findReverse() {
+        int reverse = 0;
+        int temp = number;
+
+        while (temp != 0) {
+            int digit = temp % 10; // Get the last digit
+            reverse = reverse * 10 + digit; // Append it to the reverse
+            temp /= 10; // Remove the last digit
+        }
+        return reverse;
+    }
+
+    // Method to check if the number is a palindrome
+    public boolean isPalindrome() {
+        return number == findReverse();
+    }
+
+    // Main method to test the functionality
+    public static void main(String[] args) {
+        PalindromeChecker checker = new PalindromeChecker(121); // Test with a palindrome number
+        System.out.println("Number: " + checker.number);
+        System.out.println("Reverse: " + checker.findReverse());
+        System.out.println("Is Palindrome: " + checker.isPalindrome());
+
+        PalindromeChecker checker2 = new PalindromeChecker(123); // Test with a non-palindrome number
+        System.out.println("\nNumber: " + checker2.number);
+        System.out.println("Reverse: " + checker2.findReverse());
+        System.out.println("Is Palindrome: " + checker2.isPalindrome());
+    }
+}
