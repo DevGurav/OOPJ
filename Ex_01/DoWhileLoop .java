@@ -11,3 +11,12 @@ public class DoWhileLoop
         } while (i <= 5);
     }
 }
+
+/*
+OUTPUT -
+        Value of i: 1
+        Value of i: 2 
+        Value of i: 3
+        Value of i: 4
+        Value of i: 5
+*/
