@@ -10,3 +10,7 @@ public class SimpleIf
         }
     }
 }
+/*
+output
+    The number is positive.
+    */
