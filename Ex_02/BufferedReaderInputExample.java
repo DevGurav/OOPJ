@@ -26,3 +26,10 @@ public class BufferedReaderInputExample
             }
     }
 }
+/*
+output
+Enter your name: Devendra Ramesh Gurav
+Enter your age: 19
+Name: Devendra Ramesh Gurav
+Age: 19
+    */
