@@ -22,3 +22,8 @@ class Buffer
      }
    }
 }
+/*
+output
+  Data in the file
+  JAVA PROGRAM
+  */
