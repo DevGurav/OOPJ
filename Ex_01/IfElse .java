@@ -14,3 +14,8 @@ public class IfElse
         }
     }
 }
+
+/*
+OUTPUT -
+   The number is non-positive.
+*/    
