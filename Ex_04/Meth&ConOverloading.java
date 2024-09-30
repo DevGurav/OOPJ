@@ -73,3 +73,14 @@ class Meth&ConOverloading
         System.out.println("Multiplication (direct method call): " + calc3.multiply(5, 15));
     }
 }
+/*
+output
+Addition (no parameters): 0.0
+Multiplication (no parameters): 0.0
+Addition (one parameter): 10.0
+Multiplication (one parameter): 0.0
+Addition (two parameters): 30.0
+Multiplication (two parameters): 200.0
+Addition (direct method call): 20.0
+Multiplication (direct method call): 75.0
+    */
