@@ -26,3 +26,7 @@ public class IfElseLadder
         }
     }
 }
+/*
+OUTPUT
+    Grade: B
+ */   
